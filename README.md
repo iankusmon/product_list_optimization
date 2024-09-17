@@ -1,8 +1,7 @@
-# Docker Samples :: product-lists 🤪
+# Product List Optimization
 product-lists is a small sample project for Docker demonstration purposes.
 
 It consists of a Python web API backend to generate product-lists and a Javascript SPA (single page app) frontend.
-If you are not a Python or Javascript guru, don't panic!
 
 ## Usage
 To get started, clone this repository locally:
