@@ -8,7 +8,7 @@ app = flask.Flask('product-list')
 def product_list():
     api_url = 'https://dummyjson.com/products'
     response = requests.get(api_url)
-    return response.json()
+    return flask.Response(response, status=200)
 
 
 @app.route('/ready')
