@@ -20,6 +20,6 @@ Run `make help` to see a list of available targets.
 
 ```
 git clone 
-cd product-lists
+cd product_list_optimization
 docker compose up -d
 ```
