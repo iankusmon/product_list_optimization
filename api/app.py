@@ -4,16 +4,10 @@ import requests
 
 app = flask.Flask('product-list')
 
-api_url = 'https://dummyjson.com/products'
-response = requests.get(api_url)    
-logging.getLogger('product-list').setLevel(logging.WARN)  
-
 @app.route('/api/product-list')
 def product_list():
     api_url = 'https://dummyjson.com/products'
     response = requests.get(api_url)
-    
-    logging.getLogger('product-list').setLevel(logging.WARN)  
     return response.json()
 
 

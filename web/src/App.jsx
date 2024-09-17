@@ -47,7 +47,6 @@ function App() {
         const fetchData = async () => {
           const response = await fetch('/api/product-list?');
           setProductList(response);
-          console.log(response)
         }
         fetchData();
         setLoading(false)
