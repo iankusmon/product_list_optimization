@@ -52,7 +52,9 @@ function App() {
               <CardText className='product-card__text__name'>
                 { product.title }
               </CardText>
-
+              <CardText className='product-card__text__name'>
+                { product.description }
+              </CardText>
               <div className='product-card__price'>
                 { product.price }
               </div>
