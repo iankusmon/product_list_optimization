@@ -1,0 +1,2 @@
+--save bootstrap
+reactstrap react react-dom

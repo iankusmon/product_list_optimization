@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  labels:
+    app: product-lists-api
+    app.kubernetes.io/name: api
+    app.kubernetes.io/part-of: dockersamples_product-lists
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-lists-api
+  template:
+    metadata:
+      labels:
+        app: product-lists-api
+        app.kubernetes.io/name: api
+        app.kubernetes.io/part-of: dockersamples_product-lists
+    spec:
+      containers:
+        - name: product-lists-api
+          image: product-lists-api
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              port: http
+              path: '/ready'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+  labels:
+    app.kubernetes.io/name: api
+    app.kubernetes.io/part-of: dockersamples_product-lists
+spec:
+  selector:
+    app: product-lists-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: http

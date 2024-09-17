@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: product-lists-web
+    app.kubernetes.io/name: web
+    app.kubernetes.io/part-of: dockersamples_product-lists
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-lists-web
+  template:
+    metadata:
+      labels:
+        app: product-lists-web
+        app.kubernetes.io/name: web
+        app.kubernetes.io/part-of: dockersamples_product-lists
+    spec:
+      containers:
+        - name: product-lists-web
+          image: product-lists-web
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: VITE_CLIENT_PORT
+              value: '5735'
+          ports:
+            - name: http
+              containerPort: 5173
