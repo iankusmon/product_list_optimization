@@ -1,12 +1,21 @@
-import { Col, Container, Row } from 'react'
-import { Card, CardImg, CardText, CardTitle } from 'reactstrap'
+import React, {useEffect, useState} from 'react'
+import { Card, CardImg, CardText, CardTitle, Col, Container, Row  } from 'reactstrap'
 import './App.css'
 
 function App() {
     const [loading, setLoading] = useState(true);
-    const [productList, setProductList] = useState(null);
+    const [productList, setProductList] = useState([]);
 
-    const slides = productList.map((product, index) => (
+    useEffect(() => {
+        const fetchData = async () => {
+          const response = await fetch('/api/product-list');
+          setProductList(response);
+        }
+        fetchData();
+        setLoading(false)
+      }, [loading]);
+
+      const slides = productList.map((product, index) => (
         <Col
           xs={ 6 }
           md={ 3 }
@@ -42,15 +51,6 @@ function App() {
             </Card>
         </Col>
       ))
-
-    useEffect(() => {
-        const fetchData = async () => {
-          const response = await fetch('/api/product-list?');
-          setProductList(response);
-        }
-        fetchData();
-        setLoading(false)
-      }, [loading]);
 
     
       return <>

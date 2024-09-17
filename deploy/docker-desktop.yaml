@@ -12,10 +12,6 @@ metadata:
     app.kubernetes.io/name: web
     app.kubernetes.io/part-of: dockersamples_product-lists
 spec:
-  # In a production environment, you'd most likely use a ClusterIP service with
-  # an Ingress resource for external access.
-  # For simplicity, this configuration uses a LoadBalancer type to make the
-  # frontend directly accessible via Docker Desktop.
   type: LoadBalancer
   selector:
     app: product-lists-web
